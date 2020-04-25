@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native";
 import Swiper from "react-native-swiper";
-import PageOne from "./src/page1";
+import PageOne from "./src/screen/page1";
 
 export default class SwiperComponent extends Component {
   render() {
@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "gray",
+    backgroundColor: "#E5E5E5",
   },
 });
