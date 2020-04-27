@@ -12,6 +12,7 @@ import {
   FlatList,
   ActivityIndicator,
   RefreshControl,
+  TouchableWithoutFeedback,
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
@@ -56,7 +57,61 @@ const DATA = [
 ];
 // -----------
 
-export default class pageOne extends Component {
+const newsCategory = (num) => {
+  if (num === 1) {
+    return "Formula 1";
+  }
+  if (num === 2) {
+    return "Formula E";
+  }
+  if (num === 3) {
+    return "Supercars";
+  }
+  if (num === 4) {
+    return "WEC";
+  }
+  if (num === 5) {
+    return "NASCAR";
+  }
+  if (num === 6) {
+    return "Indycar";
+  }
+  if (num === 7) {
+    return "Esports";
+  }
+  if (num === 8) {
+    return "Open wheel";
+  }
+  if (num === 9) {
+    return "Enduro";
+  }
+  if (num === 10) {
+    return "Stock";
+  }
+  if (num === 11) {
+    return "Drag";
+  }
+  if (num === 12) {
+    return "Rally";
+  }
+  if (num === 13) {
+    return "Off-road";
+  }
+  if (num === 14) {
+    return "Touring";
+  }
+  if (num === 15) {
+    return "Moto GP";
+  }
+  if (num === 16) {
+    return "Motocross";
+  }
+  if (num === 17) {
+    return "Other";
+  }
+};
+
+export default class PageTwo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,6 +153,7 @@ export default class pageOne extends Component {
       this.setState({ refreshing: false });
     });
   }
+
   render() {
     // gradient for top himage overlay
     const gradientHeightBottom = 350;
@@ -122,7 +178,23 @@ export default class pageOne extends Component {
     } else {
       return (
         <View style={styles.wholePage}>
-          <StatusBar barStyle="light-content" translucent={true} />
+          <StatusBar barStyle="light-content" />
+          {dataTop.map((_, i) => (
+            <View
+              key={i}
+              style={{
+                position: "absolute",
+                backgroundColor: "#3E3E3E",
+                height: 1,
+                top: gradientHeightTop - i - 1,
+                bottom: 10,
+                right: 0,
+                left: 0,
+                zIndex: 2,
+                opacity: (1 / gradientHeightTop) * (i + 1),
+              }}
+            />
+          ))}
           <ScrollView
             refreshControl={
               <View style={{ marginBottom: 0 }}>
@@ -133,113 +205,161 @@ export default class pageOne extends Component {
               </View>
             }
           >
-            <View style={styles.topBox}>
-              {/* image */}
-              <ImageBackground
-                style={styles.topPic}
-                source={{
-                  uri: `${this.state.dataSource[1].imageVer}`,
-                }}
-              >
-                {/* gradient */}
-                <View style={{ flex: 1 }}>
-                  {dataButtom.map((_, i) => (
-                    <View
-                      key={i}
-                      style={{
-                        position: "absolute",
-                        backgroundColor: "#3E3E3E",
-                        height: 1,
-                        bottom: gradientHeightBottom - i - 1,
-                        right: 0,
-                        left: 0,
-                        zIndex: 2,
-                        opacity: (1 / gradientHeightBottom) * (i + 1),
-                      }}
-                    />
-                  ))}
-                  {dataTop.map((_, i) => (
-                    <View
-                      key={i}
-                      style={{
-                        position: "absolute",
-                        backgroundColor: "#3E3E3E",
-                        height: 1,
-                        top: gradientHeightTop - i - 1,
-                        bottom: 10,
-                        right: 0,
-                        left: 0,
-                        zIndex: 2,
-                        opacity: (1 / gradientHeightTop) * (i + 1),
-                      }}
-                    />
-                  ))}
-                </View>
-                {/* Text */}
-                <View style={styles.textBigBox}>
-                  {this.state.fontsLoaded ? (
-                    <Text numberOfLines={5} style={styles.textBig}>
-                      {this.state.dataSource[1].title}
-                    </Text>
-                  ) : (
-                    <AppLoading />
-                  )}
-                </View>
-                <View style={styles.timeBox}>
-                  {this.state.fontsLoaded ? (
-                    <Text style={styles.time}>
-                      <TimeAgo time={this.state.dataSource[1].createdAt} /> |{" "}
-                      {this.state.dataSource[1].source}
-                    </Text>
-                  ) : (
-                    <AppLoading />
-                  )}
-                </View>
-              </ImageBackground>
-            </View>
-            <View style={styles.bottomBox}>
-              <FlatList
-                data={this.state.dataSource.slice(2)}
-                renderItem={({ item }) => (
-                  <View style={styles.listItem}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                this.props.navigation.navigate("Details", {
+                  itemWhole: this.state.dataSource.filter(
+                    (x) => x.appCategory == 1
+                  )[0],
+                });
+              }}
+            >
+              <View style={styles.topBox}>
+                {/* image */}
+                <ImageBackground
+                  style={styles.topPic}
+                  source={{
+                    uri: `${
+                      this.state.dataSource.filter((x) => x.appCategory == 1)[0]
+                        .imageVer
+                    }`,
+                  }}
+                >
+                  {/* gradient */}
+                  <View style={{ flex: 1 }}>
+                    {dataButtom.map((_, i) => (
+                      <View
+                        key={i}
+                        style={{
+                          position: "absolute",
+                          backgroundColor: "#3E3E3E",
+                          height: 1,
+                          bottom: gradientHeightBottom - i - 1,
+                          right: 0,
+                          left: 0,
+                          zIndex: 2,
+                          opacity: (1 / gradientHeightBottom) * (i + 1),
+                        }}
+                      />
+                    ))}
+                  </View>
+                  {/* Text */}
+                  <View style={styles.timeBox}>
                     {this.state.fontsLoaded ? (
-                      <View style={styles.listPic}>
-                        <Image
-                          style={styles.listImageInit}
-                          source={{
-                            uri: `${item.imageHor}`,
-                          }}
-                        />
-                      </View>
-                    ) : (
-                      <AppLoading />
-                    )}
-
-                    {this.state.fontsLoaded ? (
-                      <View style={styles.listTextBox}>
-                        <Text numberOfLines={3} style={styles.listTitle}>
-                          {item.title}
-                        </Text>
-                      </View>
-                    ) : (
-                      <AppLoading />
-                    )}
-
-                    {this.state.fontsLoaded ? (
-                      <View style={styles.listTimeBox}>
-                        <Text style={styles.listTime}>
-                          <TimeAgo time={item.createdAt} /> | {item.source}
-                        </Text>
-                      </View>
+                      <Text style={styles.topCat}>
+                        {newsCategory(
+                          this.state.dataSource.filter(
+                            (x) => x.appCategory == 1
+                          )[0].newsCategory
+                        )}
+                      </Text>
                     ) : (
                       <AppLoading />
                     )}
                   </View>
+                  <View style={styles.textBigBox}>
+                    {this.state.fontsLoaded ? (
+                      <Text numberOfLines={5} style={styles.textBig}>
+                        {
+                          this.state.dataSource.filter(
+                            (x) => x.appCategory == 1
+                          )[0].title
+                        }
+                      </Text>
+                    ) : (
+                      <AppLoading />
+                    )}
+                  </View>
+                  <View style={styles.timeBox}>
+                    {this.state.fontsLoaded ? (
+                      <Text style={styles.time}>
+                        <TimeAgo
+                          time={
+                            this.state.dataSource.filter(
+                              (x) => x.appCategory == 1
+                            )[0].createdAt
+                          }
+                        />{" "}
+                        |{" "}
+                        {
+                          this.state.dataSource.filter(
+                            (x) => x.appCategory == 1
+                          )[0].source
+                        }
+                      </Text>
+                    ) : (
+                      <AppLoading />
+                    )}
+                  </View>
+                </ImageBackground>
+              </View>
+            </TouchableWithoutFeedback>
+            <View style={styles.bottomBox}>
+              <FlatList
+                data={this.state.dataSource
+                  .filter((x) => x.appCategory == 1)
+                  .slice(1)}
+                renderItem={({ item }) => (
+                  <TouchableWithoutFeedback
+                    onPress={() => {
+                      this.props.navigation.navigate("Details", {
+                        itemWhole: item,
+                      });
+                    }}
+                  >
+                    <View style={styles.listItem}>
+                      {this.state.fontsLoaded ? (
+                        <View style={styles.listPic}>
+                          <Image
+                            style={styles.listImageInit}
+                            source={{
+                              uri: `${item.imageHor}`,
+                            }}
+                          />
+                        </View>
+                      ) : (
+                        <AppLoading />
+                      )}
+
+                      {this.state.fontsLoaded ? (
+                        <View>
+                          <Text style={styles.listCategory}>
+                            {newsCategory(item.newsCategory)}
+                          </Text>
+                        </View>
+                      ) : (
+                        <AppLoading />
+                      )}
+
+                      {this.state.fontsLoaded ? (
+                        <View style={styles.listTextBox}>
+                          <Text numberOfLines={3} style={styles.listTitle}>
+                            {item.title}
+                          </Text>
+                        </View>
+                      ) : (
+                        <AppLoading />
+                      )}
+
+                      {this.state.fontsLoaded ? (
+                        <View style={styles.listTimeBox}>
+                          <Text style={styles.listTime}>
+                            <TimeAgo time={item.createdAt} /> | {item.source}
+                          </Text>
+                        </View>
+                      ) : (
+                        <AppLoading />
+                      )}
+                    </View>
+                  </TouchableWithoutFeedback>
                 )}
                 keyExtractor={(item) => item.id}
               />
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate("Settings")}
+            >
               <Image style={styles.icon} source={require("../../img/1.png")} />
             </TouchableOpacity>
           </ScrollView>
@@ -263,11 +383,22 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 60,
   },
-  button: {
-    position: "absolute",
-    marginTop: "14%",
-    marginHorizontal: "78%",
-  },
+  button:
+    Platform.OS === "ios"
+      ? {
+          position: "absolute",
+          marginTop: "17%",
+          marginHorizontal: "78%",
+          //top: "50%",
+          //left: "50%",
+        }
+      : {
+          position: "absolute",
+          //marginTop: "17%",
+          //marginHorizontal: "78%",
+          top: "25%",
+          left: "50%",
+        },
   topBox: {
     position: "absolute",
     backgroundColor: "grey",
@@ -280,9 +411,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-
     elevation: 5,
-
     elevation: 8,
   },
   textBigBox: {
@@ -312,6 +441,13 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: "Merriweather-Regular",
   },
+  topCat: {
+    position: "relative",
+    bottom: 200,
+    color: "white",
+    fontSize: 13,
+    fontFamily: "Merriweather-Regular",
+  },
   bottomBox: {
     marginTop: 585,
     marginBottom: 30,
@@ -319,7 +455,7 @@ const styles = StyleSheet.create({
   listItem: {
     backgroundColor: "white",
     width: "100%",
-    height: 345,
+    height: 400,
     alignItems: "stretch",
     marginVertical: 14,
   },
@@ -334,9 +470,17 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   listTextBox: {
-    paddingTop: 15,
+    paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
+  },
+  listCategory: {
+    position: "relative",
+    top: 13,
+    left: 20,
+    fontSize: 13,
+    fontFamily: "Merriweather-Regular",
+    color: "#ff4141",
   },
   listTime: {
     fontSize: 10,
