@@ -145,14 +145,24 @@ export default class Settings extends Component {
           <AppLoading />
         )}
         {this.state.fontsLoaded ? (
-          <TouchableOpacity style={styles.generalText3Box}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("TandS");
+            }}
+            style={styles.generalText3Box}
+          >
             <Text style={styles.generalText3}>Terms &#38; Conditions</Text>
           </TouchableOpacity>
         ) : (
           <AppLoading />
         )}
         {this.state.fontsLoaded ? (
-          <TouchableOpacity style={styles.generalText4Box}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("PandP");
+            }}
+            style={styles.generalText4Box}
+          >
             <Text style={styles.generalText4}>Privacy Policy</Text>
           </TouchableOpacity>
         ) : (
@@ -200,7 +210,7 @@ const styles = StyleSheet.create({
   },
   backToNews: {
     position: "relative",
-    top: "55%",
+    top: Platform.OS === "ios" ? "55%" : "43%",
     left: "17%",
     fontSize: 34,
     fontFamily: "sf-bold",

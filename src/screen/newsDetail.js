@@ -306,8 +306,8 @@ const styles = StyleSheet.create({
   },
   shareIconBox: {
     position: "relative",
-    top: "1%",
-    left: 330,
+    top: Platform.OS === "ios" ? "2%" : "-7%",
+    left: Platform.OS === "ios" ? "88%" : "88%",
   },
   shareIcon: {
     height: 23,
@@ -315,7 +315,7 @@ const styles = StyleSheet.create({
   },
   backToNews: {
     position: "relative",
-    top: "31.5%",
+    top: Platform.OS === "ios" ? "31.5%" : "26%",
     left: "13%",
     fontSize: 22,
     fontFamily: "Merriweather-Light",

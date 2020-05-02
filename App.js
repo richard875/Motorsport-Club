@@ -16,6 +16,8 @@ import PageOne from "./src/screen/page1";
 import PageTwo from "./src/screen/page2";
 import NewsDetail from "./src/screen/newsDetail";
 import Settings from "./src/screen/settings";
+import TandS from "./src/screen/termsConditions";
+import PandP from "./src/screen/privacyPolicy";
 
 class SwiperComponent extends Component {
   render() {
@@ -59,6 +61,7 @@ class SwiperComponent extends Component {
         <View style={styles.slide2}>
           <PageTwo navigation={this.props.navigation} />
           {/* <Settings /> */}
+          {/* <TandS /> */}
         </View>
       </Swiper>
     );
@@ -69,6 +72,7 @@ AppRegistry.registerComponent("myproject", () => SwiperComponent);
 
 const MainStack = createStackNavigator();
 const RootStack = createStackNavigator();
+const SettingsStack = createStackNavigator();
 
 function MainStackScreen() {
   return (
@@ -79,12 +83,22 @@ function MainStackScreen() {
   );
 }
 
+function SettingsStackScreen() {
+  return (
+    <SettingsStack.Navigator headerMode="none" initialRouteName="Settings">
+      <SettingsStack.Screen name="Settings" component={Settings} />
+      <SettingsStack.Screen name="TandS" component={TandS} />
+      <SettingsStack.Screen name="PandP" component={PandP} />
+    </SettingsStack.Navigator>
+  );
+}
+
 function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
         <RootStack.Screen name="Main" component={MainStackScreen} />
-        <RootStack.Screen name="Settings" component={Settings} />
+        <RootStack.Screen name="Settings" component={SettingsStackScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

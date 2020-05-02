@@ -13,6 +13,7 @@ import {
   ActivityIndicator,
   RefreshControl,
   TouchableWithoutFeedback,
+  Platform,
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
@@ -195,14 +196,13 @@ export default class PageTwo extends Component {
               }}
             />
           ))}
+
           <ScrollView
             refreshControl={
-              <View style={{ marginBottom: 0 }}>
-                <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this._onRefresh.bind(this)}
-                />
-              </View>
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
             }
           >
             <TouchableWithoutFeedback
@@ -226,23 +226,28 @@ export default class PageTwo extends Component {
                   }}
                 >
                   {/* gradient */}
-                  <View style={{ flex: 1 }}>
-                    {dataButtom.map((_, i) => (
-                      <View
-                        key={i}
-                        style={{
-                          position: "absolute",
-                          backgroundColor: "#3E3E3E",
-                          height: 1,
-                          bottom: gradientHeightBottom - i - 1,
-                          right: 0,
-                          left: 0,
-                          zIndex: 2,
-                          opacity: (1 / gradientHeightBottom) * (i + 1),
-                        }}
-                      />
-                    ))}
-                  </View>
+                  {Platform.OS === "ios" ? (
+                    <View style={{ flex: 1 }}>
+                      {dataButtom.map((_, i) => (
+                        <View
+                          key={i}
+                          style={{
+                            position: "absolute",
+                            backgroundColor: "#3E3E3E",
+                            height: 1,
+                            bottom: gradientHeightBottom - i - 1,
+                            right: 0,
+                            left: 0,
+                            zIndex: 2,
+                            opacity: (1 / gradientHeightBottom) * (i + 1),
+                          }}
+                        />
+                      ))}
+                    </View>
+                  ) : (
+                    <View></View>
+                  )}
+
                   {/* Text */}
                   <View style={styles.textBigBox}>
                     {this.state.fontsLoaded ? (
@@ -279,8 +284,18 @@ export default class PageTwo extends Component {
                     )}
                   </View>
                 </ImageBackground>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => this.props.navigation.navigate("Settings")}
+                >
+                  <Image
+                    style={styles.icon}
+                    source={require("../../img/1.png")}
+                  />
+                </TouchableOpacity>
               </View>
             </TouchableWithoutFeedback>
+
             <View style={styles.bottomBox}>
               <FlatList
                 data={this.state.dataSource
@@ -343,12 +358,6 @@ export default class PageTwo extends Component {
                 keyExtractor={(item) => item.id}
               />
             </View>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate("Settings")}
-            >
-              <Image style={styles.icon} source={require("../../img/1.png")} />
-            </TouchableOpacity>
           </ScrollView>
         </View>
       );
@@ -370,22 +379,13 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 60,
   },
-  button:
-    Platform.OS === "ios"
-      ? {
-          position: "absolute",
-          marginTop: "17%",
-          marginHorizontal: "78%",
-          //top: "50%",
-          //left: "50%",
-        }
-      : {
-          position: "absolute",
-          //marginTop: "17%",
-          //marginHorizontal: "78%",
-          top: "25%",
-          left: "50%",
-        },
+  button: {
+    position: "absolute",
+    //marginTop: "17%",
+    //marginHorizontal: "78%",
+    top: "10%",
+    left: "80%",
+  },
   topBox: {
     position: "absolute",
     backgroundColor: "grey",
