@@ -216,7 +216,9 @@ export default class NewsDetail extends Component {
           {this.state.fontsLoaded ? (
             <View style={styles.authorBox}>
               <Text style={styles.author}>
-                {itemWhole.author === " " ? "Unknown Author" : itemWhole.author}
+                {itemWhole.author === " " || !itemWhole.author
+                  ? "Unknown Author"
+                  : itemWhole.author}
               </Text>
             </View>
           ) : (
