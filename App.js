@@ -60,8 +60,6 @@ class SwiperComponent extends Component {
         </View>
         <View style={styles.slide2}>
           <PageTwo navigation={this.props.navigation} />
-          {/* <Settings /> */}
-          {/* <TandS /> */}
         </View>
       </Swiper>
     );
