@@ -18,6 +18,7 @@ import {
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import TimeAgo from "../service/time";
+import api from "../service/api";
 
 // Customer Fonts
 let customFonts = {
@@ -134,9 +135,7 @@ export default class PageTwo extends Component {
   // For both Fonts and News
   componentDidMount() {
     this._loadFontsAsync();
-    return fetch(
-      "https://7om6jkddc8.execute-api.ap-southeast-2.amazonaws.com/dev/posts"
-    )
+    return fetch(api)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
