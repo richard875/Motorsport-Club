@@ -238,7 +238,7 @@ export default class PageTwo extends Component {
                             right: 0,
                             left: 0,
                             zIndex: 2,
-                            opacity: (1 / gradientHeightBottom) * (i + 1),
+                            opacity: (0.5 / gradientHeightBottom) * (i + 1),
                           }}
                         />
                       ))}

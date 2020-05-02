@@ -15,6 +15,7 @@ import {
   ActivityIndicator,
   RefreshControl,
   TouchableWithoutFeedback,
+  Platform,
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
@@ -87,7 +88,11 @@ export default class Settings extends Component {
     };
     return (
       <View style={styles.wholePage}>
-        <StatusBar barStyle="dark-content" />
+        {Platform.OS === "ios" ? (
+          <StatusBar barStyle="dark-content" />
+        ) : (
+          <StatusBar barStyle="light-content" />
+        )}
         <TouchableWithoutFeedback
           onPress={() => {
             this.props.navigation.goBack();
