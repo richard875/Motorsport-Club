@@ -135,7 +135,7 @@ export default class PageTwo extends Component {
   // For both Fonts and News
   componentDidMount() {
     this._loadFontsAsync();
-    return fetch(api)
+    return fetch(api())
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
