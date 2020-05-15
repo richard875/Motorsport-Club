@@ -36,7 +36,9 @@ class SwiperComponent extends Component {
               marginLeft: 3,
               marginRight: 3,
               marginTop: 3,
-              marginBottom: Platform.OS === "ios" ? "197%" : "170%",
+              //marginBottom: Platform.OS === "ios" ? "197%" : "170%",
+              position: "relative",
+              bottom: Platform.OS === "ios" ? "195%" : "170%",
             }}
           />
         }
@@ -50,7 +52,9 @@ class SwiperComponent extends Component {
               marginLeft: 3,
               marginRight: 3,
               marginTop: 3,
-              marginBottom: Platform.OS === "ios" ? "197%" : "170%",
+              //marginBottom: Platform.OS === "ios" ? "197%" : "170%",
+              position: "relative",
+              bottom: Platform.OS === "ios" ? "195%" : "170%",
             }}
           />
         }

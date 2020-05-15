@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import { WebView } from "react-native-webview";
 import TimeAgo from "../service/time";
 
 let customFonts = {
@@ -130,145 +131,167 @@ export default class NewsDetail extends Component {
       <View style={styles.wholePage}>
         {itemWhole.appCategory === 1 ? (
           <View style={styles.topBar}>
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.goBack();
-              }}
-              style={styles.backBox}
-            >
-              <Image
-                style={styles.backIcon}
-                source={require("../../img/back.png")}
-              />
-            </TouchableOpacity>
-            {this.state.fontsLoaded ? (
-              <Text style={styles.backToNews}>News</Text>
-            ) : (
-              <AppLoading />
-            )}
-            <TouchableOpacity onPress={onShare} style={styles.shareIconBox}>
-              <Image
-                style={styles.shareIcon}
-                source={
-                  Platform.OS === "ios"
-                    ? require("../../img/shareIos.png")
-                    : require("../../img/shareAndroid.png")
-                }
-              />
-            </TouchableOpacity>
+            <View style={styles.topBarView}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.goBack();
+                }}
+                style={styles.backBox}
+              >
+                <Image
+                  style={styles.backIcon}
+                  source={require("../../img/back.png")}
+                />
+              </TouchableOpacity>
+              {this.state.fontsLoaded ? (
+                <View style={styles.backToNewsBox}>
+                  <Text style={styles.backToNews}>News</Text>
+                </View>
+              ) : (
+                <AppLoading />
+              )}
+              <TouchableOpacity onPress={onShare} style={styles.shareIconBox}>
+                <Image
+                  style={styles.shareIcon}
+                  source={
+                    Platform.OS === "ios"
+                      ? require("../../img/shareIos.png")
+                      : require("../../img/shareAndroid.png")
+                  }
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         ) : (
           <View style={styles.topBarEvents}>
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.goBack();
-              }}
-              style={styles.backBox}
-            >
-              <Image
-                style={styles.backIcon}
-                source={require("../../img/back.png")}
-              />
-            </TouchableOpacity>
-            {this.state.fontsLoaded ? (
-              <Text style={styles.backToNews}>Events</Text>
-            ) : (
-              <AppLoading />
-            )}
-            <TouchableOpacity onPress={onShare} style={styles.shareIconBox}>
-              <Image
-                style={styles.shareIcon}
-                source={
-                  Platform.OS === "ios"
-                    ? require("../../img/shareIos.png")
-                    : require("../../img/shareAndroid.png")
-                }
-              />
-            </TouchableOpacity>
+            <View style={styles.topBarView}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.goBack();
+                }}
+                style={styles.backBox}
+              >
+                <Image
+                  style={styles.backIcon}
+                  source={require("../../img/back.png")}
+                />
+              </TouchableOpacity>
+              {this.state.fontsLoaded ? (
+                <View style={styles.backToNewsBox}>
+                  <Text style={styles.backToNews}>Events</Text>
+                </View>
+              ) : (
+                <AppLoading />
+              )}
+              <TouchableOpacity onPress={onShare} style={styles.shareIconBox}>
+                <Image
+                  style={styles.shareIcon}
+                  source={
+                    Platform.OS === "ios"
+                      ? require("../../img/shareIos.png")
+                      : require("../../img/shareAndroid.png")
+                  }
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         )}
 
-        <ScrollView>
-          <View style={styles.topTopPic}>
-            <Image
-              style={styles.topBigPic}
-              source={{
-                uri: `${itemWhole.imageVer}`,
-              }}
-            />
-          </View>
-          {this.state.fontsLoaded ? (
-            <View style={styles.listCategoryBox}>
-              <Text style={styles.listCategory}>
-                {newsCategory(itemWhole.newsCategory)}
-              </Text>
+        {itemWhole.appCategory === 1 ? (
+          <WebView
+            source={{ uri: `${itemWhole.url}` }}
+            //Enable Javascript support
+            javaScriptEnabled={true}
+            //For the Cache
+            domStorageEnabled={true}
+            //View to show while loading the webpage
+            //renderLoading={this.ActivityIndicatorLoadingView}
+            //Want to show the view or not
+            startInLoadingState={true}
+          />
+        ) : (
+          <ScrollView>
+            <View style={styles.topTopPic}>
+              <Image
+                style={styles.topBigPic}
+                source={{
+                  uri: `${itemWhole.imageVer}`,
+                }}
+              />
             </View>
-          ) : (
-            <AppLoading />
-          )}
-          {this.state.fontsLoaded ? (
-            <View style={styles.title}>
-              <Text style={styles.titleText}>{itemWhole.title}</Text>
-            </View>
-          ) : (
-            <AppLoading />
-          )}
-          {this.state.fontsLoaded ? (
-            <View style={styles.authorBox}>
-              <Text style={styles.author}>
-                {itemWhole.author === " " || !itemWhole.author
-                  ? "Unknown Author"
-                  : itemWhole.author}
-              </Text>
-            </View>
-          ) : (
-            <AppLoading />
-          )}
-          {this.state.fontsLoaded ? (
-            <View style={styles.timeSourceBox}>
-              <Text style={styles.timeSource}>
-                <TimeAgo time={itemWhole.createdAt} /> | {itemWhole.source}
-              </Text>
-            </View>
-          ) : (
-            <AppLoading />
-          )}
-          <View style={styles.breakLine} />
+            {this.state.fontsLoaded ? (
+              <View style={styles.listCategoryBox}>
+                <Text style={styles.listCategory}>
+                  {newsCategory(itemWhole.newsCategory)}
+                </Text>
+              </View>
+            ) : (
+              <AppLoading />
+            )}
+            {this.state.fontsLoaded ? (
+              <View style={styles.title}>
+                <Text style={styles.titleText}>{itemWhole.title}</Text>
+              </View>
+            ) : (
+              <AppLoading />
+            )}
+            {this.state.fontsLoaded ? (
+              <View style={styles.authorBox}>
+                <Text style={styles.author}>
+                  {itemWhole.author === " " || !itemWhole.author
+                    ? "Unknown Author"
+                    : itemWhole.author}
+                </Text>
+              </View>
+            ) : (
+              <AppLoading />
+            )}
+            {this.state.fontsLoaded ? (
+              <View style={styles.timeSourceBox}>
+                <Text style={styles.timeSource}>
+                  <TimeAgo time={itemWhole.createdAt} /> | {itemWhole.source}
+                </Text>
+              </View>
+            ) : (
+              <AppLoading />
+            )}
+            <View style={styles.breakLine} />
 
-          {itemWhole.description ? (
-            <View>
-              {this.state.fontsLoaded ? (
-                <View style={styles.descriptionBox}>
-                  <Text style={styles.description}>
-                    {itemWhole.description}
-                  </Text>
-                </View>
-              ) : (
-                <AppLoading />
-              )}
+            {itemWhole.description ? (
+              <View>
+                {this.state.fontsLoaded ? (
+                  <View style={styles.descriptionBox}>
+                    <Text style={styles.description}>
+                      {itemWhole.description}
+                    </Text>
+                  </View>
+                ) : (
+                  <AppLoading />
+                )}
 
-              {this.state.fontsLoaded ? (
-                <View style={styles.bodyBox}>
-                  <Text style={styles.body}>{itemWhole.body}</Text>
-                </View>
-              ) : (
-                <AppLoading />
-              )}
-            </View>
-          ) : (
-            <View>
-              {this.state.fontsLoaded ? (
-                <View style={styles.eventBodyBox}>
-                  <Text style={styles.body}>{itemWhole.body}</Text>
-                </View>
-              ) : (
-                <AppLoading />
-              )}
-            </View>
-          )}
+                {this.state.fontsLoaded ? (
+                  <View style={styles.bodyBox}>
+                    <Text style={styles.body}>{itemWhole.body}</Text>
+                  </View>
+                ) : (
+                  <AppLoading />
+                )}
+              </View>
+            ) : (
+              <View>
+                {this.state.fontsLoaded ? (
+                  <View style={styles.eventBodyBox}>
+                    <Text style={styles.body}>{itemWhole.body}</Text>
+                  </View>
+                ) : (
+                  <AppLoading />
+                )}
+              </View>
+            )}
 
-          <View style={styles.bottomBox}></View>
-        </ScrollView>
+            <View style={styles.bottomBox}></View>
+          </ScrollView>
+        )}
       </View>
     );
   }
@@ -290,6 +313,12 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#ff4141",
   },
+  topBarView: {
+    flex: 1,
+    flexDirection: "row",
+    //height: "50%",
+    top: Platform.OS === "ios" ? "13%" : "10.5%",
+  },
   topBarEvents: {
     // position: "absolute",
     // top: "20%",
@@ -298,27 +327,36 @@ const styles = StyleSheet.create({
     backgroundColor: "#4141FF",
   },
   backBox: {
-    position: "relative",
-    top: "57%",
+    //position: "relative",
+    //top: "57%",
     left: 23,
-  },
-  backIcon: {
-    height: 18,
+    height: Platform.OS === "ios" ? 18 : 22,
     width: 18,
   },
+  backIcon: {
+    height: "100%",
+    width: "100%",
+  },
   shareIconBox: {
-    position: "relative",
-    top: Platform.OS === "ios" ? "2%" : "-7%",
-    left: Platform.OS === "ios" ? "88%" : "88%",
+    //position: "relative",
+    //top: Platform.OS === "ios" ? "2%" : "-7%",
+    left: Platform.OS === "ios" ? "240%" : "300%",
+    marginTop: -2,
   },
   shareIcon: {
     height: 23,
     width: 23,
   },
+  backToNewsBox: {
+    left: 30,
+    marginTop: -4,
+    width: 100,
+  },
   backToNews: {
     position: "relative",
-    top: Platform.OS === "ios" ? "31.5%" : "26%",
-    left: "13%",
+    //top: Platform.OS === "ios" ? "31.5%" : "26%",
+    //top: 0,
+    //left: "30%",
     fontSize: 22,
     fontFamily: "Merriweather-Light",
     color: "white",

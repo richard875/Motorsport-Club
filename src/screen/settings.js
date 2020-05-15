@@ -93,6 +93,7 @@ export default class Settings extends Component {
         ) : (
           <StatusBar barStyle="light-content" />
         )}
+
         <TouchableWithoutFeedback
           onPress={() => {
             this.props.navigation.goBack();
@@ -100,15 +101,17 @@ export default class Settings extends Component {
           //style={styles.backBox}
         >
           <View>
-            <Image
-              style={styles.backIcon}
-              source={require("../../img/backBlack.png")}
-            />
-            {this.state.fontsLoaded ? (
-              <Text style={styles.backToNews}>Piston</Text>
-            ) : (
-              <AppLoading />
-            )}
+            <View style={styles.backBox}>
+              <Image
+                style={styles.backIcon}
+                source={require("../../img/backBlack.png")}
+              />
+              {/* {this.state.fontsLoaded ? (
+                <Text style={styles.backToNews}>Piston</Text>
+              ) : (
+                <AppLoading />
+              )} */}
+            </View>
           </View>
         </TouchableWithoutFeedback>
         {/* {this.state.fontsLoaded ? (
@@ -190,9 +193,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   backBox: {
-    position: "relative",
-    top: 200,
-    left: 23,
+    flex: 1,
+    flexDirection: "row",
+    //position: "relative",
+    //top: 200,
+    left: 13,
+    marginBottom: 50,
   },
   backIcon: {
     height: 23,
@@ -214,8 +220,8 @@ const styles = StyleSheet.create({
     left: 223,
   },
   backToNews: {
-    position: "relative",
-    top: Platform.OS === "ios" ? "55%" : "43%",
+    //position: "relative",
+    //top: Platform.OS === "ios" ? "55%" : "43%",
     left: "17%",
     fontSize: 34,
     fontFamily: "sf-bold",
