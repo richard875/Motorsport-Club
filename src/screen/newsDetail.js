@@ -80,7 +80,7 @@ const newsCategory = (num) => {
     return "Motocross";
   }
   if (num === 17) {
-    return "Other";
+    return "Events";
   }
 };
 
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
   topBar: {
     // position: "absolute",
     // top: "20%",
-    height: "10.6%",
+    height: Platform.OS === "ios" ? "10.6%" : "6%",
     width: "100%",
     backgroundColor: "#ff4141",
   },
@@ -322,13 +322,14 @@ const styles = StyleSheet.create({
   topBarEvents: {
     // position: "absolute",
     // top: "20%",
-    height: "10.6%",
+    height: Platform.OS === "ios" ? "10.6%" : "6%",
     width: "100%",
     backgroundColor: "#4141FF",
   },
   backBox: {
     //position: "relative",
     //top: "57%",
+    marginTop: Platform.OS === "ios" ? 0 : -28,
     left: 23,
     height: Platform.OS === "ios" ? 18 : 22,
     width: 18,
@@ -340,8 +341,8 @@ const styles = StyleSheet.create({
   shareIconBox: {
     //position: "relative",
     //top: Platform.OS === "ios" ? "2%" : "-7%",
-    left: Platform.OS === "ios" ? "240%" : "300%",
-    marginTop: -2,
+    left: Platform.OS === "ios" ? "240%" : "470%",
+    marginTop: Platform.OS === "ios" ? -2 : -28,
   },
   shareIcon: {
     height: 23,
@@ -349,7 +350,7 @@ const styles = StyleSheet.create({
   },
   backToNewsBox: {
     left: 30,
-    marginTop: -4,
+    marginTop: Platform.OS === "ios" ? -4 : -30,
     width: 100,
   },
   backToNews: {

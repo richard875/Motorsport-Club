@@ -109,7 +109,7 @@ const newsCategory = (num) => {
     return "Motocross";
   }
   if (num === 17) {
-    return "Other";
+    return "Events";
   }
 };
 

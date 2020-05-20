@@ -84,113 +84,155 @@ export default class TandS extends Component {
         </TouchableWithoutFeedback>
         <ScrollView style={styles.bigPolicy}>
           {this.state.fontsLoaded ? (
-            <Text style={styles.bigPolicyText}>
-              The post has just arrived and in it a very nice surprise, the
-              discovery that Jacques Seguela, one-time adviser to President
-              Mitterrand, now close confidant of President and Madame Sarkozy
-              (indeed he intoduced them), and something of a legend in French
-              political communications, has dedicated his latest book to little
-              old moi. With apologies for the missing accents here and in the
-              French bits of the long posting which follows – the dedication to
-              ‘Le Pouvoir dans la Peau‘ (Power in the skin) reads ‘A Alastair
-              Campbell, mon spin doctor prefere’ (three missing accents in one
-              word – mes excuses sinceres). So what did I do for this honour,
-              you are asking? Well, perhaps the fact that he asked me to read
-              his book, and write a ‘postface’ assessment both of his writing
-              and of the issues he covers, and the fact that I said yes, has
-              something to do with it. He says some blushmakingly kind things in
-              his ‘preface to the postface’, which I will have to leave to
-              French readers of the whole thing (published by Plon). But for the
-              largely Anglophone visitors of this blog, I thought some of you
-              might like to read the said ‘postface’ in English (apart from the
-              bits where I quote direct from his book). I hope all those
-              students who write asking for help with dissertations will find
-              something quotable in it. Meanwhile I am off to Norway for a
-              conference and a meeting with the Norwegian Labour Party. I’m
-              looking forward to being in the country with the highest ‘human
-              development index’ in the world, and which showed such a mature
-              response to the recent massacre of Oslo and Utoya. Here is the
-              postface to Le Pouvoir dans la Peau Jacques Seguela writes about
-              political campaigns and communications not merely as an expert
-              analyst, but as an experienced practitioner. Hence his latest book
-              contains both insights worth heeding, but also enlivening tales of
-              his own experience. He is observer and participant; outsider
-              looking in, and insider looking out. There is much to look at, not
-              least in France with a Presidential election looming, and the
-              outcome far from easy to predict. We live in a world defined by
-              the pace of change, and whilst the velocity of that change has not
-              always impacted upon our political institutions, many of which
-              would remain recognisable to figures of history, it most certainly
-              has impacted upon political communications. As Seguela writes: ‘En
-              5 ans le monde de la communication a plus evolue que dans les
-              cents dernieres annees. ‘ Google, Youtube, Twitter, Facebook have
-              quickly entered our language and changed the way we communicate,
-              live our private lives, do business, do politics. People do not
-              believe politicians as much as they once did. Nor do they believe
-              the media. So who do we believe? We believe each other. The power
-              and the political potential of social networks flows from that
-              reality. Though fiercely modern in their application, social
-              networks in some ways take us back to the politics of the village
-              square. They are an electronic word of mouth on a sometimes global
-              scale. This has changed the way people interact with each other
-              and with their politicians. My first campaign as spokesman and
-              strategist for Tony Blair was in 1997, three years in the planning
-              after he had become leader of the Opposition Labour Party. Some of
-              the principles of strategy we applied back then would certainly
-              apply to a modern day election. But their tactical execution
-              almost certainly would not. Politicians and their strategists have
-              to adapt to change as well as lead it. Seguela gives some
-              interesting insights into those who have adapted well, and those
-              who have done less well. He clearly adores former President Lula
-              of Brazil and you can feel his yearning for a French leader who
-              can somehow combine hard-headed strategy with human empathy in the
-              same way as a man who left office with satisfaction ratings of
-              87percent. Seguela probably remains best known in political
-              circles for his role advising Francois Mitterrand. Yet wheras I am
-              ‘tribal Labour’, and could not imagine supporting a Conservative
-              Party candidate in the UK, Seguela came out as a major supporter
-              of Nicolas Sarkozy. I wonder if one of the reasons was not a
-              frustration that large parts of the left in France remain
-              eternally suspicious of modern communications techniques and
-              styles which, frankly, no modern leader in a modern democracy can
-              ignore. How he or she adapts to, or uses, them is up to them. But
-              you cannot stand aside and imagine the world has not changed. If
-              Lula is a star of this book, so too is Barack Obama. American
-              elections are of enormous interest to all political campaign
-              junkies, a category in which both Seguela and I would almost
-              certainly qualify. Much is made of Obama’s use of the internet, a
-              relatively new phenomenon in historical terms and one the young
-              Senator used brilliantly in his quest to become President. Yet
-              though it was an accurate expression of his modernity,
-              underpinning its use were some very old-fashioned campaign
-              principles. He used it to turn supporters into activists who both
-              gave funds and also took his campaign materials and ideas and ran
-              their own campaigns for him. Somehow he managed to make one of the
-              most professional, most disciplined and best funded campaigns in
-              history look like an enormous act of democratic participation. It
-              was less command and control – the model we certainly adopted in
-              1997 and 2001, Labour’s two landslide victories, easing off a
-              little for our third win in 2005 – than ‘inspire and empower.’
-              ‘Yes we can’ not ‘yes I can’. His supporters were more than
-              supporters. They were an active part of the campaign, and of the
-              message. The key to this was something that had nothing to do with
-              politicians and everything to do with science, technology and the
-              internet. Ask me who has had the most influence on campaigns in
-              recent times and I might be tempted to reply Tim Berners-Lee, the
-              man credited with gifting the web to the world. Its implications
-              have been far reaching in virtually all aspects of our lives,
-              politics and political campaigns foremost. The new household brand
-              names of the cyber era have not replaced good policy work,
-              messaging and organisation. But they have become essential
-              components of the execution of them in the campaign. Mainstream
-              conventional media remains important and influential, not least
-              because, bizarrely, in most democracies the broadcasters continue
-              to let the press set their agenda for them. But a candidate who
-              tries to stand against the tide of new media will be making a big
-              mistake, and missing big opportunities. If it has changed so much
-              in the last five years, how much more will it change in the next
-              five years?
-            </Text>
+            <View style={styles.bigPolicyText}>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                By downloading or using the app, these terms will automatically
+                apply to you – you should make sure therefore that you read them
+                carefully before using the app. You’re not allowed to copy, or
+                modify the app, any part of the app, or our trademarks in any
+                way. You’re not allowed to attempt to extract the source code of
+                the app, and you also shouldn’t try to translate the app into
+                other languages, or make derivative versions. The app itself,
+                and all the trade marks, copyright, database rights and other
+                intellectual property rights related to it, still belong to
+                Richard Lee.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                Richard Lee is committed to ensuring that the app is as useful
+                and efficient as possible. For that reason, we reserve the right
+                to make changes to the app or to charge for its services, at any
+                time and for any reason. We will never charge you for the app or
+                its services without making it very clear to you exactly what
+                you’re paying for.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                The Piston Motorsport app stores and processes personal data
+                that you have provided to us, in order to provide my Service.
+                It’s your responsibility to keep your phone and access to the
+                app secure. We therefore recommend that you do not jailbreak or
+                root your phone, which is the process of removing software
+                restrictions and limitations imposed by the official operating
+                system of your device. It could make your phone vulnerable to
+                malware/viruses/malicious programs, compromise your phone’s
+                security features and it could mean that the Piston Motorsport
+                app won’t work properly or at all.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                The app does use third party services that declare their own
+                Terms and Conditions.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                Link to Terms and Conditions of third party service providers
+                used by the app
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text
+                style={{ color: "blue" }}
+                onPress={() =>
+                  Linking.openURL("https://policies.google.com/terms")
+                }
+              >
+                {"      "}- Google Play Services
+              </Text>
+              <Text
+                style={{ color: "blue" }}
+                onPress={() => Linking.openURL("https://expo.io/terms")}
+              >
+                {"      "}- Expo
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                You should be aware that there are certain things that Richard
+                Lee will not take responsibility for. Certain functions of the
+                app will require the app to have an active internet connection.
+                The connection can be Wi-Fi, or provided by your mobile network
+                provider, but Richard Lee cannot take responsibility for the app
+                not working at full functionality if you don’t have access to
+                Wi-Fi, and you don’t have any of your data allowance left.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                If you’re using the app outside of an area with Wi-Fi, you
+                should remember that your terms of the agreement with your
+                mobile network provider will still apply. As a result, you may
+                be charged by your mobile provider for the cost of data for the
+                duration of the connection while accessing the app, or other
+                third party charges. In using the app, you’re accepting
+                responsibility for any such charges, including roaming data
+                charges if you use the app outside of your home territory (i.e.
+                region or country) without turning off data roaming. If you are
+                not the bill payer for the device on which you’re using the app,
+                please be aware that we assume that you have received permission
+                from the bill payer for using the app.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                Along the same lines, Richard Lee cannot always take
+                responsibility for the way you use the app i.e. You need to make
+                sure that your device stays charged – if it runs out of battery
+                and you can’t turn it on to avail the Service, Richard Lee
+                cannot accept responsibility.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                With respect to Richard Lee’s responsibility for your use of the
+                app, when you’re using the app, it’s important to bear in mind
+                that although we endeavour to ensure that it is updated and
+                correct at all times, we do rely on third parties to provide
+                information to us so that we can make it available to you.
+                Richard Lee accepts no liability for any loss, direct or
+                indirect, you experience as a result of relying wholly on this
+                functionality of the app.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                At some point, we may wish to update the app. The app is
+                currently available on Android &amp; iOS – the requirements for
+                both systems(and for any additional systems we decide to extend
+                the availability of the app to) may change, and you’ll need to
+                download the updates if you want to keep using the app. Richard
+                Lee does not promise that it will always update the app so that
+                it is relevant to you and/or works with the Android &amp; iOS
+                version that you have installed on your device. However, you
+                promise to always accept updates to the application when offered
+                to you, We may also wish to stop providing the app, and may
+                terminate use of it at any time without giving notice of
+                termination to you. Unless we tell you otherwise, upon any
+                termination, (a) the rights and licenses granted to you in these
+                terms will end; (b) you must stop using the app, and (if needed)
+                delete it from your device.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ fontWeight: "bold" }}>
+                Changes to This Terms and Conditions
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                I may update our Terms and Conditions from time to time. Thus,
+                you are advised to review this page periodically for any
+                changes. I will notify you of any changes by posting the new
+                Terms and Conditions on this page.
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                These terms and conditions are effective as of{" "}
+                <Text style={{ fontWeight: "bold" }}>2020-05-20</Text>
+              </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ fontWeight: "bold" }}>Contact Us</Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+                If you have any questions or suggestions about my Terms and
+                Conditions, do not hesitate to contact me at richard_875@me.com.
+              </Text>
+            </View>
           ) : (
             <AppLoading />
           )}
@@ -220,7 +262,7 @@ const styles = StyleSheet.create({
   },
   backToNews: {
     position: "relative",
-    top: Platform.OS === "ios" ? "77%" : "63%",
+    top: Platform.OS === "ios" ? "77%" : "72%",
     left: "17%",
     fontSize: 25,
     fontFamily: "sf-bold",

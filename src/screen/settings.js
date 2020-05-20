@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
     fontFamily: "Merriweather-Light",
     position: "relative",
     top: 250,
-    left: 280,
+    left: Platform.OS === "ios" ? "75%" : "78%",
     color: "#B2B2B2",
   },
 });
