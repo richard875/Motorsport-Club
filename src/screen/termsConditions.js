@@ -85,7 +85,9 @@ export default class TandS extends Component {
         <ScrollView style={styles.bigPolicy}>
           {this.state.fontsLoaded ? (
             <View style={styles.bigPolicyText}>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 By downloading or using the app, these terms will automatically
                 apply to you – you should make sure therefore that you read them
                 carefully before using the app. You’re not allowed to copy, or
@@ -98,7 +100,9 @@ export default class TandS extends Component {
                 Richard Lee.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 Richard Lee is committed to ensuring that the app is as useful
                 and efficient as possible. For that reason, we reserve the right
                 to make changes to the app or to charge for its services, at any
@@ -107,7 +111,9 @@ export default class TandS extends Component {
                 you’re paying for.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 The Piston Motorsport app stores and processes personal data
                 that you have provided to us, in order to provide my Service.
                 It’s your responsibility to keep your phone and access to the
@@ -120,32 +126,48 @@ export default class TandS extends Component {
                 app won’t work properly or at all.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 The app does use third party services that declare their own
                 Terms and Conditions.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 Link to Terms and Conditions of third party service providers
                 used by the app
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
               <Text
-                style={{ color: "blue" }}
+                style={{
+                  color: "blue",
+                  lineHeight: 23,
+                  textAlign: "justify",
+                  fontSize: 15,
+                }}
                 onPress={() =>
                   Linking.openURL("https://policies.google.com/terms")
                 }
               >
-                {"      "}- Google Play Services
+                {"      "}•{"  "}Google Play Services
               </Text>
               <Text
-                style={{ color: "blue" }}
+                style={{
+                  color: "blue",
+                  lineHeight: 23,
+                  textAlign: "justify",
+                  fontSize: 15,
+                }}
                 onPress={() => Linking.openURL("https://expo.io/terms")}
               >
-                {"      "}- Expo
+                {"      "}•{"  "}Expo
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 You should be aware that there are certain things that Richard
                 Lee will not take responsibility for. Certain functions of the
                 app will require the app to have an active internet connection.
@@ -156,7 +178,9 @@ export default class TandS extends Component {
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 If you’re using the app outside of an area with Wi-Fi, you
                 should remember that your terms of the agreement with your
                 mobile network provider will still apply. As a result, you may
@@ -171,7 +195,9 @@ export default class TandS extends Component {
                 from the bill payer for using the app.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 Along the same lines, Richard Lee cannot always take
                 responsibility for the way you use the app i.e. You need to make
                 sure that your device stays charged – if it runs out of battery
@@ -179,7 +205,9 @@ export default class TandS extends Component {
                 cannot accept responsibility.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 With respect to Richard Lee’s responsibility for your use of the
                 app, when you’re using the app, it’s important to bear in mind
                 that although we endeavour to ensure that it is updated and
@@ -190,7 +218,9 @@ export default class TandS extends Component {
                 functionality of the app.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 At some point, we may wish to update the app. The app is
                 currently available on Android &amp; iOS – the requirements for
                 both systems(and for any additional systems we decide to extend
@@ -209,26 +239,48 @@ export default class TandS extends Component {
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ fontWeight: "bold" }}>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  lineHeight: 23,
+                  textAlign: "justify",
+                  fontSize: 17,
+                }}
+              >
                 Changes to This Terms and Conditions
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 I may update our Terms and Conditions from time to time. Thus,
                 you are advised to review this page periodically for any
                 changes. I will notify you of any changes by posting the new
                 Terms and Conditions on this page.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 These terms and conditions are effective as of{" "}
                 <Text style={{ fontWeight: "bold" }}>2020-05-20</Text>
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ fontWeight: "bold" }}>Contact Us</Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  lineHeight: 23,
+                  textAlign: "justify",
+                  fontSize: 17,
+                }}
+              >
+                Contact Us
+              </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>
-              <Text style={{ lineHeight: 20, textAlign: "justify" }}>
+              <Text
+                style={{ lineHeight: 23, textAlign: "justify", fontSize: 15 }}
+              >
                 If you have any questions or suggestions about my Terms and
                 Conditions, do not hesitate to contact me at richard_875@me.com.
               </Text>
