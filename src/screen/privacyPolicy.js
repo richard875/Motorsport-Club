@@ -88,8 +88,8 @@ export default class PandP extends Component {
               <Text style={{ lineHeight: 20, textAlign: "justify" }}>
                 Richard Lee built the Piston Motorsport app as an Open Source
                 app. This SERVICE is provided by Richard Lee at no cost and is
-                intended for use as is. This application is belong to Richard
-                Lee and the University of Auckland Motorsport Club has the
+                intended for use as is. This application is belonged to Richard
+                Lee. However, the University of Auckland Motorsport Club has the
                 rights to use the application with no date limit.
               </Text>
               <Text style={{ fontWeight: "bold" }}> </Text>

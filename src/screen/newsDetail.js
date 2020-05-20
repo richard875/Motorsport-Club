@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
     //position: "relative",
     //top: Platform.OS === "ios" ? "2%" : "-7%",
     left: Platform.OS === "ios" ? "240%" : "470%",
-    marginTop: Platform.OS === "ios" ? -2 : -28,
+    marginTop: Platform.OS === "ios" ? -1.5 : -28,
   },
   shareIcon: {
     height: 23,
