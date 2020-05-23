@@ -108,23 +108,84 @@ export default class NewsDetail extends Component {
 
   render() {
     const { itemWhole } = this.props.route.params;
+
     const onShare = async () => {
-      try {
-        const result = await Share.share({
-          url: `${itemWhole.url}`,
-          title: "Share this arc!",
-        });
-        if (result.action === Share.sharedAction) {
-          if (result.activityType) {
-            // shared with activity type of result.activityType
-          } else {
-            // shared
+      if (Platform.OS === "ios") {
+        if (itemWhole.appCategory === 1) {
+          try {
+            const result = await Share.share({
+              url: `${itemWhole.url}`,
+            });
+
+            if (result.action === Share.sharedAction) {
+              if (result.activityType) {
+                // shared with activity type of result.activityType
+              } else {
+                // shared
+              }
+            } else if (result.action === Share.dismissedAction) {
+              // dismissed
+            }
+          } catch (error) {
+            alert(error.message);
           }
-        } else if (result.action === Share.dismissedAction) {
-          // dismissed
+        } else {
+          try {
+            const result = await Share.share({
+              message: `Check out this article from Motorsport Club! ${itemWhole.title}`,
+            });
+
+            if (result.action === Share.sharedAction) {
+              if (result.activityType) {
+                // shared with activity type of result.activityType
+              } else {
+                // shared
+              }
+            } else if (result.action === Share.dismissedAction) {
+              // dismissed
+            }
+          } catch (error) {
+            alert(error.message);
+          }
         }
-      } catch (error) {
-        alert(error.message);
+      } else {
+        if (itemWhole.appCategory === 1) {
+          try {
+            const result = await Share.share({
+              message: `Check out this article from ${itemWhole.source}! ${itemWhole.title}`,
+            });
+
+            if (result.action === Share.sharedAction) {
+              if (result.activityType) {
+                // shared with activity type of result.activityType
+              } else {
+                // shared
+              }
+            } else if (result.action === Share.dismissedAction) {
+              // dismissed
+            }
+          } catch (error) {
+            alert(error.message);
+          }
+        } else {
+          try {
+            const result = await Share.share({
+              message: `Check out this article from Motorsport Club! ${itemWhole.title}`,
+            });
+
+            if (result.action === Share.sharedAction) {
+              if (result.activityType) {
+                // shared with activity type of result.activityType
+              } else {
+                // shared
+              }
+            } else if (result.action === Share.dismissedAction) {
+              // dismissed
+            }
+          } catch (error) {
+            alert(error.message);
+          }
+        }
       }
     };
     return (

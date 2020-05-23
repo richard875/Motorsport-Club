@@ -137,7 +137,7 @@ export default class Settings extends Component {
               style={styles.generalText2Box}
               onPress={() =>
                 Linking.openURL(
-                  "mailto:motorsportclubuoa@gmail.com?subject=Hello!"
+                  "mailto:motorsportclubuoa@gmail.com?subject=Hey Guys!"
                 )
               }
             >
