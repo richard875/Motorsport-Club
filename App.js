@@ -26,6 +26,7 @@ class SwiperComponent extends Component {
         loop={false}
         style={styles.wrapper}
         showsButtons={false}
+        paginationStyle={{ bottom: Platform.OS === "ios" ? "93%" : "95%" }}
         dot={
           <View
             style={{
@@ -36,9 +37,6 @@ class SwiperComponent extends Component {
               marginLeft: 3,
               marginRight: 3,
               marginTop: 3,
-              //marginBottom: Platform.OS === "ios" ? "197%" : "170%",
-              position: "relative",
-              top: Platform.OS === "ios" ? "-195%" : "-180%",
             }}
           />
         }
@@ -52,9 +50,6 @@ class SwiperComponent extends Component {
               marginLeft: 3,
               marginRight: 3,
               marginTop: 3,
-              //marginBottom: Platform.OS === "ios" ? "197%" : "170%",
-              position: "relative",
-              top: Platform.OS === "ios" ? "-195%" : "-180%",
             }}
           />
         }

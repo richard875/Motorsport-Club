@@ -131,7 +131,7 @@ export default class NewsDetail extends Component {
       <View style={styles.wholePage}>
         {itemWhole.appCategory === 1 ? (
           <View style={styles.topBar}>
-            <View style={styles.topBarView}>
+            <View style={styles.topRow}>
               <TouchableOpacity
                 onPress={() => {
                   this.props.navigation.goBack();
@@ -164,7 +164,7 @@ export default class NewsDetail extends Component {
           </View>
         ) : (
           <View style={styles.topBarEvents}>
-            <View style={styles.topBarView}>
+            <View style={styles.topRow}>
               <TouchableOpacity
                 onPress={() => {
                   this.props.navigation.goBack();
@@ -307,58 +307,55 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   topBar: {
-    // position: "absolute",
-    // top: "20%",
-    height: Platform.OS === "ios" ? "10.6%" : "6%",
     width: "100%",
+    height: Platform.OS === "ios" ? "10%" : "7%",
     backgroundColor: "#ff4141",
-  },
-  topBarView: {
-    flex: 1,
-    flexDirection: "row",
-    //height: "50%",
-    top: Platform.OS === "ios" ? "13%" : "10.5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   topBarEvents: {
-    // position: "absolute",
-    // top: "20%",
-    height: Platform.OS === "ios" ? "10.6%" : "6%",
     width: "100%",
+    height: Platform.OS === "ios" ? "10%" : "7%",
     backgroundColor: "#4141FF",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  topRow: {
+    flexDirection: "row",
+    top: Platform.OS === "ios" ? "4.5%" : "0%",
+    height: Platform.OS === "ios" ? 35 : 30,
+    width: "100%",
+    paddingLeft: "4%",
   },
   backBox: {
-    //position: "relative",
-    //top: "57%",
-    marginTop: Platform.OS === "ios" ? 0 : -28,
-    left: 23,
-    height: Platform.OS === "ios" ? 18 : 22,
-    width: 18,
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
   },
   backIcon: {
-    height: "100%",
-    width: "100%",
+    aspectRatio: 1,
+    height: Platform.OS === "ios" ? "60%" : "60%",
   },
   shareIconBox: {
-    //position: "relative",
-    //top: Platform.OS === "ios" ? "2%" : "-7%",
-    left: Platform.OS === "ios" ? "240%" : "470%",
-    marginTop: Platform.OS === "ios" ? -1.5 : -28,
+    position: "absolute",
+    right: Platform.OS === "ios" ? "5%" : "5%",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
   },
   shareIcon: {
-    height: 23,
-    width: 23,
+    aspectRatio: 1,
+    height: Platform.OS === "ios" ? "70%" : "70%",
   },
   backToNewsBox: {
-    left: 30,
-    marginTop: Platform.OS === "ios" ? -4 : -30,
-    width: 100,
+    paddingLeft: 7,
+    marginTop: Platform.OS === "ios" ? 1 : 0,
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   backToNews: {
-    position: "relative",
-    //top: Platform.OS === "ios" ? "31.5%" : "26%",
-    //top: 0,
-    //left: "30%",
-    fontSize: 22,
+    fontSize: Platform.OS === "ios" ? 22 : 19,
     fontFamily: "Merriweather-Light",
     color: "white",
   },

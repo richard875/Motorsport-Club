@@ -93,32 +93,27 @@ export default class Settings extends Component {
         ) : (
           <StatusBar barStyle="light-content" />
         )}
-
         <TouchableWithoutFeedback
           onPress={() => {
             this.props.navigation.goBack();
           }}
-          //style={styles.backBox}
         >
-          <View>
-            <View style={styles.backBox}>
+          <View style={styles.topBar}>
+            <View style={styles.backIconBox}>
               <Image
                 style={styles.backIcon}
                 source={require("../../img/backBlack.png")}
               />
-              {/* {this.state.fontsLoaded ? (
-                <Text style={styles.backToNews}>Piston</Text>
-              ) : (
-                <AppLoading />
-              )} */}
             </View>
+            {this.state.fontsLoaded ? (
+              <View style={styles.backToNewsBox}>
+                <Text style={styles.backToNews}>Piston</Text>
+              </View>
+            ) : (
+              <AppLoading />
+            )}
           </View>
         </TouchableWithoutFeedback>
-        {/* {this.state.fontsLoaded ? (
-          <Text style={styles.backToNews}>Piston</Text>
-        ) : (
-          <AppLoading />
-        )} */}
 
         {this.state.fontsLoaded ? (
           <Text style={styles.general}>General</Text>
@@ -192,6 +187,20 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "white",
   },
+  topBar: {
+    flexDirection: "row",
+    top: Platform.OS === "ios" ? 60 : 35,
+    height: 35,
+    width: "100%",
+    paddingLeft: 20,
+    marginBottom: Platform.OS === "ios" ? 20 : 0,
+  },
+  backIconBox: {
+    aspectRatio: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
   backBox: {
     flex: 1,
     flexDirection: "row",
@@ -201,11 +210,8 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   backIcon: {
-    height: 23,
-    width: 23,
-    position: "relative",
-    top: 67,
-    left: 23,
+    height: Platform.OS === "ios" ? "60%" : "50%",
+    width: Platform.OS === "ios" ? "60%" : "50%",
   },
   forward: {
     height: 23,
@@ -219,11 +225,15 @@ const styles = StyleSheet.create({
     top: "9%",
     left: 223,
   },
+  backToNewsBox: {
+    marginTop: Platform.OS === "ios" ? 0 : 1,
+    paddingLeft: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
   backToNews: {
-    //position: "relative",
-    //top: Platform.OS === "ios" ? "55%" : "43%",
-    left: "17%",
-    fontSize: 34,
+    fontSize: 30,
     fontFamily: "sf-bold",
     color: "black",
   },
@@ -281,9 +291,9 @@ const styles = StyleSheet.create({
   versionText: {
     fontSize: 10,
     fontFamily: "Merriweather-Light",
-    position: "relative",
-    top: 250,
-    left: Platform.OS === "ios" ? "75%" : "78%",
+    position: "absolute",
+    top: "60%",
+    right: "10%",
     color: "#B2B2B2",
   },
 });

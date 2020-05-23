@@ -63,20 +63,27 @@ export default class PandP extends Component {
   render() {
     return (
       <View style={styles.wholePage}>
-        <StatusBar barStyle="dark-content" />
+        {Platform.OS === "ios" ? (
+          <StatusBar barStyle="dark-content" />
+        ) : (
+          <StatusBar barStyle="light-content" />
+        )}
         <TouchableWithoutFeedback
           onPress={() => {
             this.props.navigation.goBack();
           }}
-          //style={styles.backBox}
         >
-          <View>
-            <Image
-              style={styles.backIcon}
-              source={require("../../img/backBlack.png")}
-            />
+          <View style={styles.topBar}>
+            <View style={styles.backIconBox}>
+              <Image
+                style={styles.backIcon}
+                source={require("../../img/backBlack.png")}
+              />
+            </View>
             {this.state.fontsLoaded ? (
-              <Text style={styles.backToNews}>Privacy Policy</Text>
+              <View style={styles.backToNewsBox}>
+                <Text style={styles.backToNews}>Privacy Policy</Text>
+              </View>
             ) : (
               <AppLoading />
             )}
@@ -422,30 +429,44 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "white",
   },
+  topBar: {
+    flexDirection: "row",
+    top: Platform.OS === "ios" ? 50 : 20,
+    height: 35,
+    width: "100%",
+    paddingLeft: 20,
+  },
   backBox: {
     position: "relative",
     top: 200,
     left: 23,
   },
+  backIconBox: {
+    aspectRatio: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
   backIcon: {
-    height: 23,
-    width: 23,
-    position: "relative",
-    top: 67,
-    left: 23,
+    height: Platform.OS === "ios" ? "60%" : "50%",
+    width: Platform.OS === "ios" ? "60%" : "50%",
+  },
+  backToNewsBox: {
+    paddingTop: 1,
+    paddingLeft: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
   },
   backToNews: {
-    position: "relative",
-    top: Platform.OS === "ios" ? "77%" : "72%",
-    left: "17%",
-    fontSize: 25,
+    fontSize: 23,
     fontFamily: "sf-bold",
     color: "black",
   },
   bigPolicy: {
     paddingLeft: 20,
     paddingRight: 20,
-    marginTop: 60,
+    marginTop: Platform.OS === "ios" ? "20%" : "10%",
     marginBottom: 30,
   },
   bigPolicyText: {
