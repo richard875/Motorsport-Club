@@ -27,30 +27,8 @@ class SwiperComponent extends Component {
         style={styles.wrapper}
         showsButtons={false}
         paginationStyle={{ bottom: Platform.OS === "ios" ? "93%" : "95%" }}
-        dot={
-          <View
-            style={{
-              backgroundColor: "rgba(255,255,255,.3)",
-              width: 60,
-              height: 4,
-              borderRadius: 4,
-              marginLeft: 3,
-              marginRight: 3,
-            }}
-          />
-        }
-        activeDot={
-          <View
-            style={{
-              backgroundColor: "rgba(255,255,255,1)",
-              width: 60,
-              height: 4,
-              borderRadius: 4,
-              marginLeft: 3,
-              marginRight: 3,
-            }}
-          />
-        }
+        dot={<View style={styles.dot} />}
+        activeDot={<View style={styles.activeDot} />}
       >
         <View style={styles.slide1}>
           <PageOne navigation={this.props.navigation} />
@@ -114,5 +92,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#E5E5E5",
+  },
+  dot: {
+    backgroundColor: "rgba(255,255,255,.3)",
+    width: 60,
+    height: 4,
+    borderRadius: 4,
+    marginLeft: 3,
+    marginRight: 3,
+  },
+  activeDot: {
+    backgroundColor: "rgba(255,255,255,1)",
+    width: 60,
+    height: 4,
+    borderRadius: 4,
+    marginLeft: 3,
+    marginRight: 3,
   },
 });
