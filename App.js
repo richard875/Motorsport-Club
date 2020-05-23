@@ -30,26 +30,24 @@ class SwiperComponent extends Component {
         dot={
           <View
             style={{
-              backgroundColor: "rgba(255,255,255,.2)",
-              width: 45,
+              backgroundColor: "rgba(255,255,255,.3)",
+              width: 60,
               height: 4,
               borderRadius: 4,
               marginLeft: 3,
               marginRight: 3,
-              marginTop: 3,
             }}
           />
         }
         activeDot={
           <View
             style={{
-              backgroundColor: "rgba(255,255,255,.8)",
-              width: 45,
+              backgroundColor: "rgba(255,255,255,1)",
+              width: 60,
               height: 4,
               borderRadius: 4,
               marginLeft: 3,
               marginRight: 3,
-              marginTop: 3,
             }}
           />
         }
