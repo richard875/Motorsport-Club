@@ -19,6 +19,7 @@ import { AppLoading } from "expo";
 import { WebView } from "react-native-webview";
 import TimeAgo from "../service/time";
 import ProgressBarExample from "../service/loadingBar";
+const Device = require("react-native-device-detection");
 
 let customFonts = {
   "Merriweather-Bold": require("../../assets/fonts/Merriweather-Bold.ttf"),
@@ -406,7 +407,7 @@ const styles = StyleSheet.create({
   },
   topRow: {
     flexDirection: "row",
-    top: Platform.OS === "ios" ? "4.5%" : "0%",
+    top: Platform.OS === "ios" ? (Device.isIphoneX ? "4.5%" : "2.3%") : "0%",
     height: Platform.OS === "ios" ? 35 : 30,
     width: "100%",
     paddingLeft: "4%",
@@ -418,7 +419,7 @@ const styles = StyleSheet.create({
   },
   backIcon: {
     aspectRatio: 1,
-    height: Platform.OS === "ios" ? "60%" : "60%",
+    height: Platform.OS === "ios" ? "50%" : "60%",
   },
   shareIconBox: {
     position: "absolute",
@@ -429,7 +430,7 @@ const styles = StyleSheet.create({
   },
   shareIcon: {
     aspectRatio: 1,
-    height: Platform.OS === "ios" ? "70%" : "70%",
+    height: Platform.OS === "ios" ? "65%" : "70%",
   },
   backToNewsBox: {
     paddingLeft: 7,

@@ -26,7 +26,7 @@ class SwiperComponent extends Component {
         loop={false}
         style={styles.wrapper}
         showsButtons={false}
-        paginationStyle={{ bottom: Platform.OS === "ios" ? "93%" : "95%" }}
+        paginationStyle={{ bottom: Platform.OS === "ios" ? "94%" : "95%" }}
         dot={<View style={styles.dot} />}
         activeDot={<View style={styles.activeDot} />}
       >

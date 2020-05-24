@@ -20,6 +20,7 @@ import {
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import TimeAgo from "../service/time";
+const Device = require("react-native-device-detection");
 
 let customFonts = {
   "Merriweather-Bold": require("../../assets/fonts/Merriweather-Bold.ttf"),
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     flexDirection: "row",
-    top: Platform.OS === "ios" ? 60 : 35,
+    top: Platform.OS === "ios" ? (Device.isIphoneX ? 60 : 47) : 35,
     height: 35,
     width: "100%",
     paddingLeft: 20,

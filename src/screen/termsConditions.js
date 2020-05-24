@@ -291,6 +291,8 @@ export default class TandS extends Component {
                 If you have any questions or suggestions about my Terms and
                 Conditions, do not hesitate to contact me at richard_875@me.com.
               </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
+              <Text style={{ fontWeight: "bold" }}> </Text>
             </View>
           ) : (
             <AppLoading />
@@ -345,7 +347,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     marginTop: Platform.OS === "ios" ? "20%" : "10%",
-    marginBottom: 30,
   },
   bigPolicyText: {
     textAlign: "justify",

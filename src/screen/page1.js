@@ -19,6 +19,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import TimeAgo from "../service/time";
 import api from "../service/api";
+const Device = require("react-native-device-detection");
 
 // Customer Fonts
 let customFonts = {
@@ -416,7 +417,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     //marginTop: "17%",
     //marginHorizontal: "78%",
-    top: "10%",
+    top: Platform.OS === "ios" ? (Device.isIphoneX ? "10%" : "8%") : "10%",
     left: "80%",
   },
   topBox: {
