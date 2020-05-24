@@ -317,7 +317,6 @@ export default class PageTwo extends Component {
                     </View>
                   )}
                 </ImageBackground>
-
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => this.props.navigation.navigate("Settings")}
