@@ -8,6 +8,7 @@ import {
   Image,
   Platform,
   Button,
+  Share,
 } from "react-native";
 import Swiper from "react-native-swiper";
 import { NavigationContainer } from "@react-navigation/native";
@@ -18,30 +19,8 @@ import NewsDetail from "./src/screen/newsDetail";
 import Settings from "./src/screen/settings";
 import TandS from "./src/screen/termsConditions";
 import PandP from "./src/screen/privacyPolicy";
-
-class SwiperComponent extends Component {
-  render() {
-    return (
-      <Swiper
-        loop={false}
-        style={styles.wrapper}
-        showsButtons={false}
-        paginationStyle={{ bottom: Platform.OS === "ios" ? "94%" : "95%" }}
-        dot={<View style={styles.dot} />}
-        activeDot={<View style={styles.activeDot} />}
-      >
-        <View style={styles.slide1}>
-          <PageOne navigation={this.props.navigation} />
-        </View>
-        <View style={styles.slide2}>
-          <PageTwo navigation={this.props.navigation} />
-        </View>
-      </Swiper>
-    );
-  }
-}
-
-AppRegistry.registerComponent("myproject", () => SwiperComponent);
+import * as SplashScreen from "expo-splash-screen";
+import SwiperComponent from "./src/screen/swiper";
 
 const MainStack = createStackNavigator();
 const RootStack = createStackNavigator();
@@ -66,47 +45,44 @@ function SettingsStackScreen() {
   );
 }
 
-function App() {
-  return (
-    <NavigationContainer>
-      <RootStack.Navigator mode="modal" headerMode="none">
-        <RootStack.Screen name="Main" component={MainStackScreen} />
-        <RootStack.Screen name="Settings" component={SettingsStackScreen} />
-      </RootStack.Navigator>
-    </NavigationContainer>
-  );
+export default class App extends React.Component {
+  state = {
+    appIsReady: false,
+  };
+
+  async componentDidMount() {
+    // Prevent native splash screen from autohiding
+    try {
+      await SplashScreen.preventAutoHideAsync();
+    } catch (e) {
+      console.warn(e);
+    }
+    this.prepareResources();
+  }
+
+  prepareResources = async () => {
+    await performAPICalls();
+    await downloadAssets();
+
+    this.setState({ appIsReady: true }, async () => {
+      await SplashScreen.hideAsync();
+    });
+  };
+  render() {
+    if (!this.state.appIsReady) {
+      return null;
+    }
+
+    return (
+      <NavigationContainer>
+        <RootStack.Navigator mode="modal" headerMode="none">
+          <RootStack.Screen name="Main" component={MainStackScreen} />
+          <RootStack.Screen name="Settings" component={SettingsStackScreen} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
-export default App;
-
-const styles = StyleSheet.create({
-  wrapper: {},
-  slide1: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#E5E5E5",
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#E5E5E5",
-  },
-  dot: {
-    backgroundColor: "rgba(255,255,255,.3)",
-    width: 60,
-    height: 4,
-    borderRadius: 4,
-    marginLeft: 3,
-    marginRight: 3,
-  },
-  activeDot: {
-    backgroundColor: "rgba(255,255,255,1)",
-    width: 60,
-    height: 4,
-    borderRadius: 4,
-    marginLeft: 3,
-    marginRight: 3,
-  },
-});
+async function performAPICalls() {}
+async function downloadAssets() {}

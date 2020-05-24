@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Animated } from "react-native";
+import AnimatedLoader from "react-native-animated-loader";
 
 export default class ProgressBarExample extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { visible: false };
+  }
   state = {
     progressStatusValue: 0,
   };
   animation = new Animated.Value(0);
   componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        visible: !this.state.visible,
+      });
+    }, 2000);
     this.onAnimation();
   }
   onAnimation = () => {
@@ -20,6 +30,7 @@ export default class ProgressBarExample extends Component {
     }).start();
   };
   render() {
+    const { visible } = this.state;
     return (
       <Animated.View
         style={[
@@ -27,6 +38,13 @@ export default class ProgressBarExample extends Component {
           { width: this.state.progressStatusValue + "%" },
         ]}
       />
+      // <AnimatedLoader
+      //   visible={visible}
+      //   overlayColor="#E5E5E5"
+      //   source={require("../../assets/7233-car-animation.json")}
+      //   animationStyle={progressStyles.lottie}
+      //   speed={2}
+      // />
     );
   }
 }
@@ -39,5 +57,9 @@ const progressStyles = StyleSheet.create({
     height: 3,
     borderRadius: 0,
     backgroundColor: "#fcba03",
+  },
+  lottie: {
+    width: 300,
+    height: 300,
   },
 });

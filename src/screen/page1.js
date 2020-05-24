@@ -17,6 +17,7 @@ import {
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import AnimatedLoader from "react-native-animated-loader";
 import TimeAgo from "../service/time";
 import api from "../service/api";
 const Device = require("react-native-device-detection");
@@ -114,10 +115,11 @@ const newsCategory = (num) => {
   }
 };
 
-export default class PageTwo extends Component {
+export default class PageOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      visible: false,
       isLoading: true,
       dataSource: null,
     };
@@ -136,6 +138,11 @@ export default class PageTwo extends Component {
   // For both Fonts and News
   componentDidMount() {
     this._loadFontsAsync();
+    setInterval(() => {
+      this.setState({
+        visible: !this.state.visible,
+      });
+    }, 5000);
     return fetch(api())
       .then((response) => response.json())
       .then((responseJson) => {
@@ -148,6 +155,7 @@ export default class PageTwo extends Component {
         console.log(error);
       });
   }
+
   _onRefresh() {
     this.setState({ refreshing: true });
     this.componentDidMount().then(() => {
@@ -156,6 +164,7 @@ export default class PageTwo extends Component {
   }
 
   render() {
+    const { visible } = this.state;
     // gradient for top himage overlay
     const gradientHeightBottom = 350;
     const dataButtom = Array.from({ length: gradientHeightBottom });
@@ -164,17 +173,13 @@ export default class PageTwo extends Component {
 
     if (this.state.isLoading) {
       return (
-        <View
-          styles={{
-            flex: 1,
-            backgroundColor: "fff",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <ActivityIndicator size="small" style={{ marginBottom: 10 }} />
-          <Text>Loading, please wait...</Text>
-        </View>
+        <AnimatedLoader
+          visible={visible}
+          overlayColor="#E5E5E5"
+          source={require("../../assets/7233-car-animation.json")}
+          animationStyle={styles.lottie}
+          speed={2}
+        />
       );
     } else {
       return (
@@ -518,5 +523,9 @@ const styles = StyleSheet.create({
   listImageInit: {
     width: "100%",
     height: "100%",
+  },
+  lottie: {
+    width: 300,
+    height: 300,
   },
 });
