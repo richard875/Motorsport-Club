@@ -295,7 +295,29 @@ export default class PageTwo extends Component {
                       <AppLoading />
                     )}
                   </View>
+                  {Platform.OS === "ios" ? (
+                    <View></View>
+                  ) : (
+                    <View style={{ flex: 1 }}>
+                      {dataButtom.map((_, i) => (
+                        <View
+                          key={i}
+                          style={{
+                            position: "absolute",
+                            backgroundColor: "#3E3E3E",
+                            height: 1,
+                            bottom: gradientHeightBottom - i - 1,
+                            right: 0,
+                            left: 0,
+                            zIndex: 2,
+                            opacity: (0.5 / gradientHeightBottom) * (i + 1),
+                          }}
+                        />
+                      ))}
+                    </View>
+                  )}
                 </ImageBackground>
+
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => this.props.navigation.navigate("Settings")}
@@ -420,6 +442,7 @@ const styles = StyleSheet.create({
     width: "60%",
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    zIndex: 1000,
   },
   textBig: {
     color: "white",
@@ -434,6 +457,7 @@ const styles = StyleSheet.create({
     width: "60%",
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    zIndex: 1000,
   },
   time: {
     color: "white",

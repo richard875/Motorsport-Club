@@ -107,11 +107,9 @@ export default class NewsDetail extends Component {
     this._loadFontsAsync();
   }
 
-  //------------------------------------------------------
   ActivityIndicatorLoadingView() {
     return <ProgressBarExample />;
   }
-  //------------------------------------------------------
 
   render() {
     const { itemWhole } = this.props.route.params;
