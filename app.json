@@ -18,7 +18,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.richardlee.motorsport",
       "buildNumber": "1.0.0"
     },
