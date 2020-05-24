@@ -18,6 +18,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { WebView } from "react-native-webview";
 import TimeAgo from "../service/time";
+import ProgressBarExample from "../service/loadingBar";
 
 let customFonts = {
   "Merriweather-Bold": require("../../assets/fonts/Merriweather-Bold.ttf"),
@@ -105,6 +106,12 @@ export default class NewsDetail extends Component {
   componentDidMount() {
     this._loadFontsAsync();
   }
+
+  //------------------------------------------------------
+  ActivityIndicatorLoadingView() {
+    return <ProgressBarExample />;
+  }
+  //------------------------------------------------------
 
   render() {
     const { itemWhole } = this.props.route.params;
@@ -266,7 +273,7 @@ export default class NewsDetail extends Component {
             //For the Cache
             domStorageEnabled={true}
             //View to show while loading the webpage
-            //renderLoading={this.ActivityIndicatorLoadingView}
+            renderLoading={this.ActivityIndicatorLoadingView}
             //Want to show the view or not
             startInLoadingState={true}
           />
@@ -373,6 +380,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff4141",
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 9,
+    },
+    shadowOpacity: 0.48,
+    shadowRadius: 11.95,
+
+    elevation: 18,
   },
   topBarEvents: {
     width: "100%",
@@ -380,6 +396,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#4141FF",
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 9,
+    },
+    shadowOpacity: 0.48,
+    shadowRadius: 11.95,
+
+    elevation: 18,
   },
   topRow: {
     flexDirection: "row",
