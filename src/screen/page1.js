@@ -172,15 +172,7 @@ export default class PageOne extends Component {
     const dataTop = Array.from({ length: gradientHeightTop });
 
     if (this.state.isLoading) {
-      return (
-        <AnimatedLoader
-          visible={visible}
-          overlayColor="#E5E5E5"
-          source={require("../../assets/7233-car-animation.json")}
-          animationStyle={styles.lottie}
-          speed={2}
-        />
-      );
+      return <ActivityIndicator />;
     } else {
       return (
         <View style={styles.wholePage}>
