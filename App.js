@@ -9,6 +9,7 @@ import {
   Platform,
   Button,
   Share,
+  ActivityIndicator,
 } from "react-native";
 import Swiper from "react-native-swiper";
 import { NavigationContainer } from "@react-navigation/native";
@@ -21,6 +22,7 @@ import TandS from "./src/screen/termsConditions";
 import PandP from "./src/screen/privacyPolicy";
 import * as SplashScreen from "expo-splash-screen";
 import SwiperComponent from "./src/screen/swiper";
+import AnimatedLoader from "react-native-animated-loader";
 
 const MainStack = createStackNavigator();
 const RootStack = createStackNavigator();

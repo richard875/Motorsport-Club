@@ -17,8 +17,8 @@ import {
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { WebView } from "react-native-webview";
+import ProgressWebView from "react-native-progress-webview";
 import TimeAgo from "../service/time";
-import ProgressBarExample from "../service/loadingBar";
 const Device = require("react-native-device-detection");
 
 let customFonts = {
@@ -106,10 +106,6 @@ export default class NewsDetail extends Component {
 
   componentDidMount() {
     this._loadFontsAsync();
-  }
-
-  ActivityIndicatorLoadingView() {
-    return <ProgressBarExample />;
   }
 
   render() {
@@ -265,16 +261,12 @@ export default class NewsDetail extends Component {
         )}
 
         {itemWhole.appCategory === 1 ? (
-          <WebView
+          <ProgressWebView
             source={{ uri: `${itemWhole.url}` }}
-            //Enable Javascript support
-            javaScriptEnabled={true}
-            //For the Cache
+            color={"#fcba03"}
+            disappearDuration={1000}
+            height={3}
             domStorageEnabled={true}
-            //View to show while loading the webpage
-            renderLoading={this.ActivityIndicatorLoadingView}
-            //Want to show the view or not
-            startInLoadingState={true}
           />
         ) : (
           <ScrollView>

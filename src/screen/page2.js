@@ -17,6 +17,7 @@ import {
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import LottieView from "lottie-react-native";
 import TimeAgo from "../service/time";
 import api from "../service/api";
 const Device = require("react-native-device-detection");
@@ -118,6 +119,7 @@ export default class PageTwo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      visible: false,
       isLoading: true,
       dataSource: null,
     };
@@ -135,6 +137,7 @@ export default class PageTwo extends Component {
 
   // For both Fonts and News
   componentDidMount() {
+    this.animation.play();
     this._loadFontsAsync();
     return fetch(api())
       .then((response) => response.json())
@@ -155,6 +158,11 @@ export default class PageTwo extends Component {
     });
   }
 
+  resetAnimation = () => {
+    this.animation.reset();
+    this.animation.play();
+  };
+
   render() {
     // gradient for top himage overlay
     const gradientHeightBottom = 350;
@@ -164,16 +172,15 @@ export default class PageTwo extends Component {
 
     if (this.state.isLoading) {
       return (
-        <View
-          styles={{
-            flex: 1,
-            backgroundColor: "fff",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <ActivityIndicator size="small" style={{ marginBottom: 10 }} />
-          <Text>Loading, please wait...</Text>
+        <View style={styles.animationContainer}>
+          <LottieView
+            ref={(animation) => {
+              this.animation = animation;
+            }}
+            style={styles.lottie}
+            source={require("../../assets/7233-car-animation.json")}
+            speed={2}
+          />
         </View>
       );
     } else {
@@ -404,7 +411,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     //marginTop: "17%",
     //marginHorizontal: "78%",
-    top: Platform.OS === "ios" ? (Device.isIphoneX ? "10%" : "8%") : "10%",
+    top: Platform.OS === "ios" ? (Device.isIphoneX ? "10%" : "8%") : "8%",
     left: "80%",
   },
   topBox: {
@@ -505,5 +512,10 @@ const styles = StyleSheet.create({
   listImageInit: {
     width: "100%",
     height: "100%",
+  },
+  lottie: {
+    width: 300,
+    height: 300,
+    backgroundColor: "transparent",
   },
 });

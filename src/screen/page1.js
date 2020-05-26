@@ -17,7 +17,7 @@ import {
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import AnimatedLoader from "react-native-animated-loader";
+import LottieView from "lottie-react-native";
 import TimeAgo from "../service/time";
 import api from "../service/api";
 const Device = require("react-native-device-detection");
@@ -137,12 +137,8 @@ export default class PageOne extends Component {
 
   // For both Fonts and News
   componentDidMount() {
+    this.animation.play();
     this._loadFontsAsync();
-    setInterval(() => {
-      this.setState({
-        visible: !this.state.visible,
-      });
-    }, 5000);
     return fetch(api())
       .then((response) => response.json())
       .then((responseJson) => {
@@ -163,8 +159,12 @@ export default class PageOne extends Component {
     });
   }
 
+  resetAnimation = () => {
+    this.animation.reset();
+    this.animation.play();
+  };
+
   render() {
-    const { visible } = this.state;
     // gradient for top himage overlay
     const gradientHeightBottom = 350;
     const dataButtom = Array.from({ length: gradientHeightBottom });
@@ -172,7 +172,18 @@ export default class PageOne extends Component {
     const dataTop = Array.from({ length: gradientHeightTop });
 
     if (this.state.isLoading) {
-      return <ActivityIndicator />;
+      return (
+        <View style={styles.animationContainer}>
+          <LottieView
+            ref={(animation) => {
+              this.animation = animation;
+            }}
+            style={styles.lottie}
+            source={require("../../assets/7233-car-animation.json")}
+            speed={2}
+          />
+        </View>
+      );
     } else {
       return (
         <View style={styles.wholePage}>
@@ -414,7 +425,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     //marginTop: "17%",
     //marginHorizontal: "78%",
-    top: Platform.OS === "ios" ? (Device.isIphoneX ? "10%" : "8%") : "10%",
+    top: Platform.OS === "ios" ? (Device.isIphoneX ? "10%" : "8%") : "8%",
     left: "80%",
   },
   topBox: {
@@ -519,5 +530,6 @@ const styles = StyleSheet.create({
   lottie: {
     width: 300,
     height: 300,
+    backgroundColor: "transparent",
   },
 });

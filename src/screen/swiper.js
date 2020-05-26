@@ -24,10 +24,11 @@ export default class SwiperComponent extends Component {
   render() {
     return (
       <Swiper
+        index={0}
         loop={false}
         style={styles.wrapper}
         showsButtons={false}
-        paginationStyle={{ bottom: Platform.OS === "ios" ? "94%" : "95%" }}
+        paginationStyle={{ bottom: Platform.OS === "ios" ? "94%" : "94%" }}
         dot={<View style={styles.dot} />}
         activeDot={<View style={styles.activeDot} />}
       >
