@@ -8,6 +8,7 @@ import {
   Image,
   Platform,
   Button,
+  StatusBar,
 } from "react-native";
 import Swiper from "react-native-swiper";
 // import { NavigationContainer } from "@react-navigation/native";
@@ -28,7 +29,7 @@ export default class SwiperComponent extends Component {
         loop={false}
         style={styles.wrapper}
         showsButtons={false}
-        paginationStyle={{ bottom: Platform.OS === "ios" ? "94%" : "94%" }}
+        paginationStyle={{ bottom: Platform.OS === "ios" ? "94%" : "97%" }}
         dot={<View style={styles.dot} />}
         activeDot={<View style={styles.activeDot} />}
       >

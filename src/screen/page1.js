@@ -187,7 +187,7 @@ export default class PageOne extends Component {
     } else {
       return (
         <View style={styles.wholePage}>
-          <StatusBar barStyle="light-content" />
+          <StatusBar barStyle="light-content" translucent={false} />
           {dataTop.map((_, i) => (
             <View
               key={i}

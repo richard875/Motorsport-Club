@@ -192,6 +192,7 @@ export default class NewsDetail extends Component {
     };
     return (
       <View style={styles.wholePage}>
+        <StatusBar barStyle="light-content" translucent={false} />
         {itemWhole.appCategory === 1 ? (
           <View style={styles.topBar}>
             <View style={styles.topRow}>

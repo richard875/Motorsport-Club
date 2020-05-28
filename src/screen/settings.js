@@ -92,7 +92,7 @@ export default class Settings extends Component {
         {Platform.OS === "ios" ? (
           <StatusBar barStyle="dark-content" />
         ) : (
-          <StatusBar barStyle="light-content" />
+          <StatusBar barStyle="light-content" translucent={false} />
         )}
         <TouchableWithoutFeedback
           onPress={() => {
