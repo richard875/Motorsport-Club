@@ -14,6 +14,7 @@ import {
   RefreshControl,
   TouchableWithoutFeedback,
   Platform,
+  Alert,
 } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
@@ -21,6 +22,7 @@ import LottieView from "lottie-react-native";
 import TimeAgo from "../service/time";
 import api from "../service/api";
 const Device = require("react-native-device-detection");
+var firstLoad = true;
 
 // Customer Fonts
 let customFonts = {
@@ -122,6 +124,7 @@ export default class PageOne extends Component {
       visible: false,
       isLoading: true,
       dataSource: null,
+      isTimeOut: true,
     };
   }
 
@@ -137,8 +140,18 @@ export default class PageOne extends Component {
 
   // For both Fonts and News
   componentDidMount() {
-    this.animation.play();
+    {
+      firstLoad == true
+        ? (this.animation.play(), (firstLoad = false))
+        : (firstLoad = false);
+    }
     this._loadFontsAsync();
+    setTimeout(() => {
+      this.setState({
+        isTimeOut: false,
+        firstLoad: false,
+      });
+    }, 10000);
     return fetch(api())
       .then((response) => response.json())
       .then((responseJson) => {
@@ -173,15 +186,31 @@ export default class PageOne extends Component {
 
     if (this.state.isLoading) {
       return (
-        <View style={styles.animationContainer}>
-          <LottieView
-            ref={(animation) => {
-              this.animation = animation;
-            }}
-            style={styles.lottie}
-            source={require("../../assets/7233-car-animation.json")}
-            speed={2}
-          />
+        <View>
+          {this.state.isTimeOut ? (
+            <View>
+              <LottieView
+                ref={(animation) => {
+                  this.animation = animation;
+                }}
+                style={styles.lottie}
+                source={require("../../assets/7233-car-animation.json")}
+                speed={2}
+              />
+              {/* <Image source={require("../../img/rotateDevice.gif")} /> */}
+            </View>
+          ) : (
+            <View>
+              {() => {
+                Alert.alert(
+                  "Request timeout!",
+                  "Please check your internet connection",
+                  [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+                  { cancelable: false }
+                );
+              }}
+            </View>
+          )}
         </View>
       );
     } else {
