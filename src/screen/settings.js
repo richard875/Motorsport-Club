@@ -41,7 +41,7 @@ let customFonts = {
   "sf-ultralight": require("../../assets/fonts/sf-ui-display-ultralight-58646b19bf205.otf"),
 };
 
-export default class Settings extends Component {
+export default class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

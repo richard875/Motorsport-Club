@@ -212,7 +212,8 @@ export default class NewsDetail extends Component {
                   <Text style={styles.backToNews}>News</Text>
                 </View>
               ) : (
-                <AppLoading />
+                <View></View>
+                // <AppLoading />
               )}
               <TouchableOpacity onPress={onShare} style={styles.shareIconBox}>
                 <Image

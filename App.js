@@ -79,7 +79,7 @@ export default class App extends React.Component {
       <NavigationContainer>
         <RootStack.Navigator mode="modal" headerMode="none">
           <RootStack.Screen name="Main" component={MainStackScreen} />
-          <RootStack.Screen name="Settings" component={SettingsStackScreen} />
+          {/* <RootStack.Screen name="Settings" component={SettingsStackScreen} /> */}
         </RootStack.Navigator>
       </NavigationContainer>
     );
